@@ -1,0 +1,7 @@
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: fit-content;
+    margin: 0 auto;
+  }

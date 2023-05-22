@@ -17,9 +17,8 @@ export class RegisterComponent {
 
   }
   registerForm=this.builder.group({
-    id:this.builder.control('',Validators.compose([Validators.required, Validators.minLength(3)])),
-    username:this.builder.control('',Validators.required),
-    password:this.builder.control('',Validators.required),
+    username:this.builder.control('',Validators.compose([Validators.required, Validators.minLength(5)])),
+    password:this.builder.control('',Validators.compose([Validators.required, Validators.minLength(3)])),
     email:this.builder.control('',Validators.compose([Validators.required,Validators.email]))
   });
   proceedRegistration(){

@@ -1,10 +1,9 @@
 {
-  "user": [{
-    "id":"admin",
+  "user": [
+  {
     "username":"adminuser",
     "password":"adminuser123",
     "email":"admin@gmail.com"
   }
-  
   ]
 }
