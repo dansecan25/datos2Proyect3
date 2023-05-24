@@ -17,13 +17,14 @@ export class RegisterComponent {
 
   }
   registerForm=this.builder.group({
+    id: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
     username:this.builder.control('',Validators.compose([Validators.required, Validators.minLength(5)])),
     password:this.builder.control('',Validators.compose([Validators.required, Validators.minLength(3)])),
     email:this.builder.control('',Validators.compose([Validators.required,Validators.email]))
   });
   extractFormData(): any {
-    const { username, password, email } = this.registerForm.value;
-    return { username, password, email };
+    const { id, username, password, email } = this.registerForm.value;
+    return { id, username, password, email };
   }
   proceedRegistration() {
     if (this.registerForm.valid) {

@@ -1,9 +1,16 @@
 {
   "user": [
-  {
-    "username":"adminuser",
-    "password":"adminuser123",
-    "email":"admin@gmail.com"
-  }
+    {
+      "id": 1,
+      "username": "adminuser",
+      "password": "adminuser123",
+      "email": "admin@gmail.com"
+    },
+    {
+      "id": "nextID",
+      "username": "dansecan25",
+      "password": "123456789",
+      "email": "dsecanas254@gmail.com"
+    }
   ]
 }

@@ -23,6 +23,7 @@ server.post('/login', (req:any, res:any, next:any) => {
 });
 
 server.post('/register', (req:any, res:any) => {
+  console.log(res);
   const users = readUsers();
   const user = users.filter((u: { username: any; }) => u.username === req.body.username)[0];
 
