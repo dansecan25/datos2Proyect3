@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,12 @@ export class AuthService {
       })
     );
   }
-  ProceedRegister(inputdata:any){
-      return this.http.post(this.apiurl,inputdata);
+  ProceedRegister(inputData:any): Observable<any>{
+    console.log(inputData);
+    return this.http.post(this.apiurl,inputData);
   }
   isloggedin(){
     return sessionStorage.getItem('username')!=null;
   }
+  
 }

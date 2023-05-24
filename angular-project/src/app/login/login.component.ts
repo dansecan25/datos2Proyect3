@@ -25,7 +25,6 @@ export class LoginComponent {
       const username = this.loginForm.value.username ?? '';
       this.service.getByUsername(username).subscribe(res => {
         this.userData = res;
-        console.log(this.userData);
         if (this.userData && this.userData.password === this.loginForm.value.password) {
           sessionStorage.setItem('username', this.userData.username);
           this.router.navigate(['']);

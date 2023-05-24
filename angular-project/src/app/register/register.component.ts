@@ -21,14 +21,21 @@ export class RegisterComponent {
     password:this.builder.control('',Validators.compose([Validators.required, Validators.minLength(3)])),
     email:this.builder.control('',Validators.compose([Validators.required,Validators.email]))
   });
-  proceedRegistration(){
-    if(this.registerForm.valid){
-      this.service.ProceedRegister(this.registerForm.value).subscribe(res=>{
-        this.toastr.success('Succesfuly registered');
+  extractFormData(): any {
+    const { username, password, email } = this.registerForm.value;
+    return { username, password, email };
+  }
+  proceedRegistration() {
+    if (this.registerForm.valid) {
+      const formData = this.extractFormData();
+      this.service.ProceedRegister(formData).subscribe(res => {
+        this.registerForm.reset(); // Reset the form after successful registration
+        this.toastr.success('Successfully registered');
         this.router.navigate(['login']);
       });
-    }else{
+    } else {
       this.toastr.warning('Data is not valid');
     }
   }
+  
 }
