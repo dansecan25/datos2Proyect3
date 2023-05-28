@@ -15,13 +15,15 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UpdatepopupComponent } from './updatepopup/updatepopup.component';
-import { ErrorComponent } from './error/error.component'
+import { ErrorComponent } from './error/error.component';
 
 
+//class with the routes types
 const appRoute:Routes =[
   {path:"",component:HomeComponent},
   {path:"**",component:ErrorComponent}
 ]
+//declares the components/pages of the app
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,7 @@ const appRoute:Routes =[
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    RouterModule.forRoot(appRoute)
+    RouterModule.forRoot(appRoute) //declares for the router the pages
   ],
   providers: [],
   bootstrap: [AppComponent]

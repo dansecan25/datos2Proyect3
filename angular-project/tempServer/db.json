@@ -7,10 +7,16 @@
       "email": "admin@gmail.com"
     },
     {
-      "id": "nextID",
       "username": "dansecan25",
-      "password": "123456789",
-      "email": "dsecanas254@gmail.com"
+      "password": "pikukin25",
+      "email": "dsecanas254@gmail.com",
+      "id": 2
+    },
+    {
+      "username": "dansec26",
+      "password": "0011",
+      "email": "dsecanas254@gmail.com",
+      "id": 3
     }
   ]
 }

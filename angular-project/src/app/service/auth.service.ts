@@ -21,6 +21,21 @@ export class AuthService {
       })
     );
   }
+  //gets the last id from the api
+  getLastId(): Observable<number> {
+    return this.http.get<any[]>(this.apiurl).pipe(
+      map((response: any[]) => {
+        let maxId = 0;
+        for (const user of response) {
+          if (user.id > maxId) {
+            maxId = user.id;
+          }
+        }
+        return maxId;
+      })
+    );
+  }
+  //posts the data to the api
   ProceedRegister(inputData:any): Observable<any>{
     console.log(inputData);
     return this.http.post(this.apiurl,inputData);
