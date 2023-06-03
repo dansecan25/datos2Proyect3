@@ -26,5 +26,12 @@ void loop() {
       Serial.println("0");
     }
   }
+  
+  if (Serial.available()) {
+    char receivedChar = Serial.read();
+    // Handle any received characters from the computer if necessary
+    // For example, you can perform certain actions based on the received character
+  }
+
   delay(100);  // Delay to avoid rapid repeating
 }

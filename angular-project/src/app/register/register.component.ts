@@ -1,7 +1,8 @@
-import { Component,HostListener} from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormBuilder, Validators, ValidatorFn, FormControl, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
+import { SerialServiceService } from '../serial-service.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,29 +16,28 @@ export class RegisterComponent {
     private builder: FormBuilder,
     private toastr: ToastrService,
     private service: AuthService,
-    private router: Router
+    private router: Router,
+    private serialService: SerialServiceService
   ) {}
+
   currentPassword: string = '';
   arduinoPasswordValidator: ValidatorFn = (control: AbstractControl) => {
     const value = control.value ? control.value.toString() : '';
-  
+
     if (value && !/^[01]*$/.test(value)) {
       return { invalidPassword: true };
     }
     return null;
   };
+
   @HostListener('window:keydown', ['$event'])
-    onKeyDown(event: KeyboardEvent) {
-      const key = event.key;
-      this.handleSerialData(key);
-    }
-  registerForm = this.builder.group({
-    username: ['', [Validators.required, Validators.minLength(5)]],
-    password: ['', [Validators.required, Validators.minLength(3), this.arduinoPasswordValidator]],
-    email: ['', [Validators.required, Validators.email]]
-  });
+  onKeyDown(event: KeyboardEvent) {
+    const key = event.key;
+    this.handleSerialData(key);
+  }
+
   handleSerialData(data: string) {
-    if (data === '0' || data === '1') { //handler for the input from the serial port
+    if (data === '0' || data === '1') {
       this.currentPassword += data;
       this.registerForm.get('password')?.setValue(this.currentPassword);
     } else if (data === 'Backspace') {
@@ -45,6 +45,13 @@ export class RegisterComponent {
       this.registerForm.get('password')?.setValue(this.currentPassword);
     }
   }
+
+  registerForm = this.builder.group({
+    username: ['', [Validators.required, Validators.minLength(5)]],
+    password: ['', [Validators.required, Validators.minLength(3), this.arduinoPasswordValidator]],
+    email: ['', [Validators.required, Validators.email]]
+  });
+
   extractFormData(): any {
     const { username, password, email } = this.registerForm.value;
     return { username, password, email };
@@ -66,3 +73,4 @@ export class RegisterComponent {
     }
   }
 }
+
