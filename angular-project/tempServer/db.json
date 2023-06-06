@@ -3,20 +3,26 @@
     {
       "id": 1,
       "username": "adminuser",
-      "password": "adminuser123",
+      "password": "adminus",
       "email": "admin@gmail.com"
     },
     {
       "username": "dansecan25",
-      "password": "pikukin25",
+      "password": "10001100111111010011",
       "email": "dsecanas254@gmail.com",
       "id": 2
     },
     {
-      "username": "dansec26",
-      "password": "0011",
+      "username": "dansecan24",
+      "password": "1100111100001010",
       "email": "dsecanas254@gmail.com",
       "id": 3
+    },
+    {
+      "username": "adminuser",
+      "password": "110001001101",
+      "email": "dsecanas254@gmail.com",
+      "id": 4
     }
   ]
 }
