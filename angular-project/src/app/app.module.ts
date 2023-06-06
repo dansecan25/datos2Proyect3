@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UpdatepopupComponent } from './updatepopup/updatepopup.component';
 import { ErrorComponent } from './error/error.component';
+import { SerialServiceService } from './serial-service.service';
 
 
 //class with the routes types
@@ -43,7 +44,7 @@ const appRoute:Routes =[
     ToastrModule.forRoot(),
     RouterModule.forRoot(appRoute) //declares for the router the pages
   ],
-  providers: [],
+  providers: [SerialServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { FormBuilder, Validators, ValidatorFn, FormControl, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
+import { SerialServiceService } from '../serial-service.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -62,3 +63,4 @@ export class RegisterComponent {
     }
   }
 }
+
