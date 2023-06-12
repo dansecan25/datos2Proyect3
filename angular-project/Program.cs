@@ -2,11 +2,22 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using angular_project;
+using angular_project.Models;
 
 public class Program
 {
     public static void Main(string[] args)
     {
+        var morseControl = new MorseManager();
+        string testString= "01111010000101010010";
+        Console.WriteLine("Original morse:  "+testString);
+        string alphabet=morseControl.MorseToAlphabet(testString);
+        Console.WriteLine("Word:  "+alphabet);
+        //Test alphabet and compress it
+        var huffmanControl = new Huffman();
+
+        Console.WriteLine("Reconverted string:  "+morseControl.alphabetToMorse(alphabet));
         var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         var builder = WebApplication.CreateBuilder(args);
 

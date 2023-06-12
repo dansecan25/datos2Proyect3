@@ -1,26 +1,27 @@
 using System.Text;
 using Newtonsoft.Json;
+using angular_project;
+using angular_project.Models;
 
-
+namespace angular_project.Models;
 
 public class Huffman{
-    public class HuffmanNode
-    {
-        public char Symbol { get; set; }
-        public int Frequency { get; set; }
-        public HuffmanNode? Left { get; set; }
-        public HuffmanNode? Right { get; set; }
-    }
 
-    Huffman(){
+    private DictionaryHandmade<DictionaryNodeData> frequencies;
+    private HuffmanTreeList<HuffmanNode> tree;
+
+    public Huffman(){
+        frequencies=new DictionaryHandmade<DictionaryNodeData>();
+        tree=new HuffmanTreeList<HuffmanNode>();
     }
 
     string compress(string data, string username){
-        var frequencies= GetFrequencies(data);
-        var tree= BuildTree(frequencies);
-        var compressedString = BuildStringCompressed(tree);
-        var dictionary = CreateDictionary(tree);
+        GetFrequencies(data);
+        BuildTree();
+        var compressedString = BuildStringCompressed();
+        var dictionary = CreateDictionary();
         StoreDictionary(dictionary, username);
+
         return compressedString;
 
     }
@@ -45,96 +46,68 @@ public class Huffman{
 
         return decompressedData.ToString();
     }
-    public string BuildStringCompressed(HuffmanNode tree){
+    public string BuildStringCompressed(){
         return "hello";
     }
 
-    public int[][] GetFrequencies(string data)
+    public void GetFrequencies(string data)
     {
-        var frequencies = new Dictionary<char, int>();
-
         foreach (char c in data)
         {
-            if (frequencies.ContainsKey(c))
+            if (frequencies.charInDictionary(c))
             {
-                frequencies[c]++;
+                int actualVal=frequencies.GetInChar(c)+1;
+                frequencies.setIntInChar(actualVal,c);
             }
             else
             {
-                frequencies[c] = 1;
+                frequencies.Add(c,1);
             }
         }
-
-        var result = new int[frequencies.Count][];
-        int i = 0;
-
-        foreach (var kvp in frequencies)
-        {
-            result[i] = new int[] { (int)kvp.Key, kvp.Value };
-            i++;
-        }
-
-        return result;
     }
 
-    public HuffmanNode BuildTree(int[][] frequencies)
+    private void BuildTree()
+{
+    HuffmanTreeList<HuffmanNode> nodes = new HuffmanTreeList<HuffmanNode>();
+
+    foreach (var pair in frequencies)
     {
-        var queue = new Queue<HuffmanNode>();
-
-        foreach (var freq in frequencies)
+        HuffmanNode node = new HuffmanNode
         {
-            var node = new HuffmanNode
-            {
-                Symbol = (char)freq[0],
-                Frequency = freq[1]
-            };
-
-            queue.Enqueue(node);
-        }
-
-        while (queue.Count > 1)
-        {
-            var left = queue.Dequeue();
-            var right = queue.Dequeue();
-
-            var parent = new HuffmanNode
-            {
-                Frequency = left.Frequency + right.Frequency,
-                Left = left,
-                Right = right
-            };
-
-            queue.Enqueue(parent);
-        }
-
-        return queue.Dequeue();
+            Symbol = frecuencies.get.Key,
+            Frequency = pair.Value
+        };
+        nodes.Add(node);
     }
-    public Dictionary<char, string> CreateDictionary(HuffmanNode tree)
+
+    while (nodes.Count > 1)
     {
-        var dictionary = new Dictionary<char, string>();
+        // Sort the nodes based on their frequencies
+        nodes.Sort();
 
-        void Traverse(HuffmanNode node, string path)
+        // Create a new parent node with the two nodes having the lowest frequencies as children
+        HuffmanNode parent = new HuffmanNode
         {
-            if (node.Left == null && node.Right == null)
-            {
-                dictionary[node.Symbol] = path;
-                return;
-            }
+            Left = nodes[0],
+            Right = nodes[1],
+            Frequency = nodes[0].Frequency + nodes[1].Frequency
+        };
 
-            if (node.Left != null)
-            {
-                Traverse(node.Left, path + "0");
-            }
+        // Remove the two lowest frequency nodes and add the parent node
+        nodes.RemoveLast();
+        nodes.RemoveLast();
+        nodes.Add(parent);
+    }
 
-            if (node.Right != null)
-            {
-                Traverse(node.Right, path + "1");
-            }
-        }
+    // The last remaining node is the root of the Huffman tree
+    root = nodes[0];
+}
 
-        Traverse(tree, "");
+    public Dictionary<char, string>? CreateDictionary()
+    {
 
-        return dictionary;
+        
+        return null;
     }
 
     public void StoreDictionary(Dictionary<char, string> dictionary, string username)

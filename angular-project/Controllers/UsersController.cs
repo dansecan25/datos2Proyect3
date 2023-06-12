@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Microsoft.AspNetCore.Cors; 
-using System.Collections.Generic;
-using System.IO;
-using ServerFilesTemp.Models; 
-namespace ServerFilesTemp.Controllers
+using Microsoft.AspNetCore.Cors;
+using angular_project.Models;
+
+namespace angular_project.Controllers
 {
     [ApiController]
-    [Route("users")]
-    [EnableCors("default")]
+    [Route("[controller]")]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class UsersController : ControllerBase
     {
         [HttpPost]

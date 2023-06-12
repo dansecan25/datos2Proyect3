@@ -1,4 +1,4 @@
-namespace ServerFilesTemp.Models
+namespace angular_project.Models
 {
     public class User
     {
