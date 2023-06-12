@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Cors; 
 using System.Collections.Generic;
 using System.IO;
 using ServerFilesTemp.Models; 
@@ -7,6 +8,7 @@ namespace ServerFilesTemp.Controllers
 {
     [ApiController]
     [Route("users")]
+    [EnableCors("default")]
     public class UsersController : ControllerBase
     {
         [HttpPost]
