@@ -1,6 +1,10 @@
-<body>
-  <app-nav-menu></app-nav-menu>
-  <main class="container">
-    <router-outlet></router-outlet>
-  </main>
-</body>
+<!-- Toolbar -->
+<div class="toolbar" *ngIf="isMenuVisible" role="banner">
+  <span>Welcome</span>
+  <a routerLink="">Home</a>
+  <a style="color:#c2c3c4" routerLink="/login">Logout</a>
+</div>
+
+<div class="content" style="width: 100%;display: block;" role="main">
+  <router-outlet></router-outlet>
+</div>
