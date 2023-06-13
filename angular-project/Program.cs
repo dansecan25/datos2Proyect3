@@ -10,13 +10,14 @@ public class Program
     public static void Main(string[] args)
     {
         var morseControl = new MorseManager();
-        string testString= "01111010000101010010";
+        string testString= "00011000000110110010001000001000000011010001100000011010001100000011011001000100";
         Console.WriteLine("Original morse:  "+testString);
         string alphabet=morseControl.MorseToAlphabet(testString);
+        //string alphabet="DANSECANDANDANSE";
         Console.WriteLine("Word:  "+alphabet);
         //Test alphabet and compress it
         var huffmanControl = new Huffman();
-
+        Console.WriteLine("Compressed string: "+huffmanControl.compress(alphabet,"dansecan26"));
         Console.WriteLine("Reconverted string:  "+morseControl.alphabetToMorse(alphabet));
         var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         var builder = WebApplication.CreateBuilder(args);

@@ -1,32 +1,32 @@
-namespace angular_project;
+namespace angular_project.Models;
 
-using angular_project;
+using angular_project.Models;
 
-public class DictionaryNode<T>
+public class CompressionNode<T>
 {
-    public DictionaryNodeData Data { get; set; }
-    public DictionaryNode<T>? Next { get; set; }
+    public CompressionNodeData Data { get; set; }
+    public CompressionNode<T>? Next { get; set; }
 
-    public DictionaryNode(DictionaryNodeData data)
+    public CompressionNode(CompressionNodeData data)
     {
         Data = data;
         Next = null;
     }
 }
 
-public class DictionaryHandmade<T>
+public class CompressionDictionary<T>
 {
-    private DictionaryNode<T>? head;
-    private DictionaryNode<T>? tail;
+    private CompressionNode<T>? head;
+    private CompressionNode<T>? tail;
     private int count;
 
     public int getCount(){
         return this.count;
     }
-    public void Add(char charValue, int valueInt)
+    public void Add(char charValue, string valueStr)
 {
-    DictionaryNodeData dataDoub = new DictionaryNodeData(charValue, valueInt);
-    DictionaryNode<T> newNode = new DictionaryNode<T>(dataDoub);
+    CompressionNodeData dataDoub = new CompressionNodeData(charValue, valueStr);
+    CompressionNode<T> newNode = new CompressionNode<T>(dataDoub);
 
     if (head == null)
     {
@@ -50,26 +50,26 @@ public class DictionaryHandmade<T>
 }
 
 
-    public int GetInChar(char charValue)
+    public string GetInChar(char charValue)
 {
-    DictionaryNode<T>? current = head; // Add the null-forgiving operator here
+    CompressionNode<T>? current = head; // Add the null-forgiving operator here
 
     while (current != null)
     {
         if (current.Data.getChar() == charValue)
-            return current.Data.getInt();
+            return current.Data.getString();
 
         current = current.Next;
     }
 
-    return -19;
+    return "NONE";
 }
 
     public bool charInDictionary(char charSearchValue){
-        DictionaryNode<T>? current = head;
+        CompressionNode<T>? current = head;
         while (current != null)
         {
-            if (current.Data.getInt() == charSearchValue)
+            if (current.Data.getChar() == charSearchValue)
                 return true;
             current = current.Next;
         }
@@ -77,13 +77,13 @@ public class DictionaryHandmade<T>
         return false;
     }
 
-    public char? GetInInt(int value)
+    public char? GetInString(string value)
     {
-            DictionaryNode<T>? current = head; // Add the null-forgiving operator here
+            CompressionNode<T>? current = head; // Add the null-forgiving operator here
 
         while (current != null)
         {
-            if (current.Data.getInt() == value)
+            if (current.Data.getString() == value)
             
                 return current.Data.getChar();
 
@@ -94,7 +94,7 @@ public class DictionaryHandmade<T>
     }
     public char getCharFromPos(int pos)
     {
-            DictionaryNode<T>? current = head; // Add the null-forgiving operator here
+            CompressionNode<T>? current = head; // Add the null-forgiving operator here
             int counter=0;
         while (current != null)
         {   
@@ -108,29 +108,29 @@ public class DictionaryHandmade<T>
         return 'd';
     }
 
-    public int getIntFromPos(int pos)
+    public string getStringFromPos(int pos)
     {
-            DictionaryNode<T>? current = head; // Add the null-forgiving operator here
+            CompressionNode<T>? current = head; // Add the null-forgiving operator here
             int counter=0;
         while (current != null)
         {   
             if (counter == pos)
-                return current.Data.getInt();
+                return current.Data.getString();
 
             current = current.Next;
             counter++;
         }
 
-        return -10;
+        return "NONE";
     }
     //sets the char value for a int
-    public void setCharInInt(int value, char newValue)
+    public void setCharInString(string value, char newValue)
     {
-            DictionaryNode<T>? current = head; // Add the null-forgiving operator here
+            CompressionNode<T>? current = head; // Add the null-forgiving operator here
 
         while (current != null)
         {
-            if (current.Data.getInt() == value)
+            if (current.Data.getString() == value)
             
                 current.Data.setChar(newValue);
 
@@ -138,15 +138,15 @@ public class DictionaryHandmade<T>
         }
     }
     //sets the int value for a char
-    public void setIntInChar(int newValue, char charValue)
+    public void setStringInChar(string newValue, char charValue)
     {
-            DictionaryNode<T>? current = head; // Add the null-forgiving operator here
+            CompressionNode<T>? current = head; // Add the null-forgiving operator here
 
         while (current != null)
         {
             if (current.Data.getChar() == charValue)
             
-                current.Data.setInt(newValue);
+                current.Data.setString(newValue);
 
             current = current.Next;
         }
@@ -154,8 +154,8 @@ public class DictionaryHandmade<T>
 
     public void removeByChar(char charValue)
     {
-        DictionaryNode<T>? current = head;
-        DictionaryNode<T>? previous = null;
+        CompressionNode<T>? current = head;
+        CompressionNode<T>? previous = null;
 
         while (current != null)
         {
@@ -201,7 +201,7 @@ public class DictionaryHandmade<T>
         else
         {
             // Find the node before the tail
-            DictionaryNode<T>? current = head;
+            CompressionNode<T>? current = head;
             while (current!.Next != tail)
             {
                 current = current.Next;
@@ -217,10 +217,10 @@ public class DictionaryHandmade<T>
 
     public void Print()
     {
-        DictionaryNode<T>? current = head;
+        CompressionNode<T>? current = head;
         while (current != null)
         {
-            Console.WriteLine(current.Data.getInt());
+            Console.WriteLine(current.Data.getString());
             current = current.Next;
         }
     }

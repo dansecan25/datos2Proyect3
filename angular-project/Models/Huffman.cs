@@ -9,18 +9,22 @@ public class Huffman{
 
     private DictionaryHandmade<DictionaryNodeData> frequencies;
     private HuffmanTreeList<HuffmanNode> tree;
+    private HuffmanListNode<HuffmanNode>? root;
+
+     private CompressionDictionary<CompressionNodeData> dictionary;
 
     public Huffman(){
         frequencies=new DictionaryHandmade<DictionaryNodeData>();
         tree=new HuffmanTreeList<HuffmanNode>();
+        dictionary=new CompressionDictionary<CompressionNodeData>();
     }
 
-    string compress(string data, string username){
+    public string compress(string data, string username){
         GetFrequencies(data);
         BuildTree();
-        var compressedString = BuildStringCompressed();
-        var dictionary = CreateDictionary();
-        StoreDictionary(dictionary, username);
+        CreateDictionary();
+        var compressedString = BuildStringCompressed(data);
+        //StoreDictionary(username);
 
         return compressedString;
 
@@ -46,8 +50,14 @@ public class Huffman{
 
         return decompressedData.ToString();
     }
-    public string BuildStringCompressed(){
-        return "hello";
+    public string BuildStringCompressed(string code){
+        Console.WriteLine("Lenght of dict: "+dictionary.getCount());
+        string compressedString="";
+        for(int i=0;i<code.Length;i++){
+            char actual=code[i];
+            compressedString+=dictionary.GetInChar(actual);
+        }
+        return compressedString;
     }
 
     public void GetFrequencies(string data)
@@ -70,17 +80,16 @@ public class Huffman{
 {
     HuffmanTreeList<HuffmanNode> nodes = new HuffmanTreeList<HuffmanNode>();
 
-    foreach (var pair in frequencies)
-    {
-        HuffmanNode node = new HuffmanNode
+    for(int i=0;i<frequencies.getCount();i++){
+         HuffmanNode node = new HuffmanNode
         {
-            Symbol = frecuencies.get.Key,
-            Frequency = pair.Value
+            Symbol = frequencies.getCharFromPos(i),
+            Frequency = frequencies.getIntFromPos(i)
         };
         nodes.Add(node);
     }
 
-    while (nodes.Count > 1)
+    while (nodes.GetCount() > 1)
     {
         // Sort the nodes based on their frequencies
         nodes.Sort();
@@ -88,9 +97,9 @@ public class Huffman{
         // Create a new parent node with the two nodes having the lowest frequencies as children
         HuffmanNode parent = new HuffmanNode
         {
-            Left = nodes[0],
-            Right = nodes[1],
-            Frequency = nodes[0].Frequency + nodes[1].Frequency
+            Left = nodes.GetNodeAtPosition(0).Data,
+            Right = nodes.GetNodeAtPosition(1).Data,
+            Frequency = nodes.GetNodeAtPosition(0).Data.Frequency + nodes.GetNodeAtPosition(1).Data.Frequency
         };
 
         // Remove the two lowest frequency nodes and add the parent node
@@ -100,17 +109,30 @@ public class Huffman{
     }
 
     // The last remaining node is the root of the Huffman tree
-    root = nodes[0];
+    tree = nodes;
+    root=nodes.GetNodeAtPosition(0);
+
 }
 
-    public Dictionary<char, string>? CreateDictionary()
+    private void CreateDictionary()
     {
-
-        
-        return null;
+        var dictionary = new Dictionary<char, string>();
+        TraverseTree(root.Data, "");
     }
 
-    public void StoreDictionary(Dictionary<char, string> dictionary, string username)
+    private void TraverseTree(HuffmanNode node, string code)
+    {
+        if (node.Left == null && node.Right == null)
+        {
+            dictionary.setStringInChar(code,node.Symbol);
+            return;
+        }
+
+        TraverseTree(node.Left, code + "0");
+        TraverseTree(node.Right, code + "1");
+    }
+
+    public void StoreDictionary(string username)
     {
         var compressedPasswords = new Dictionary<string, Dictionary<char, string>>();
 
@@ -120,7 +142,7 @@ public class Huffman{
             compressedPasswords = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<char, string>>>(existingData);
         }
 
-        compressedPasswords[username] = dictionary;
+        //compressedPasswords[username] = dictionary;
 
         var jsonData = JsonConvert.SerializeObject(compressedPasswords);
         File.WriteAllText("compressedPasswords.json", jsonData);
