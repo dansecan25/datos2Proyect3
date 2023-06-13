@@ -1,0 +1,460 @@
+body {
+  background-image: url('../../assets/images/background.jpg');
+  background-color: #f1f1f1;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  height: 720px;
+}
+
+.column-left {
+  flex-basis: 20%;
+  background: transparent;
+  padding:10px;
+  border-style: double;
+  border-width: 2px;
+  border-color: white;
+}
+
+.column-right {
+  flex-basis: 80%;
+  background: transparent;
+  padding: 10px;
+  border-bottom: double;
+  border-right: double;
+  border-top: double;
+  text-align: center;
+  border-width: 2px;
+  border-color: white;
+}
+
+.row {
+  display: flex;
+  background: transparent;
+  padding: 10px;
+  text-align: center;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  background: transparent;
+}
+
+.scroll-container {
+  width: 300px;
+  height: 100%;
+  overflow:scroll;
+  visibility: visible;
+  border-radius: 10px;
+}
+
+.scroll-content {
+  visibility: visible;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: black;
+  border-radius: 10px;
+  border-style: double;
+  visibility: visible;
+}
+
+/* Mat-tree-node */
+.mat-tree-node {
+  font-size: 15px;
+  font-style:italic;
+  text-align: center;
+  border-radius: 10px;
+  background: transparent;
+  list-style-type: none;
+  color: white;
+}
+
+/* Mat-tree */
+.mat-tree {
+  font-size: 30px;
+  font-style:italic;
+  text-align: left;
+  border-radius: 10px;
+  background: transparent;
+  list-style-type: none;
+  color: white;
+}
+
+/* Mat-icon */
+.mi-icon {
+  padding: 0%;
+  border-radius: 2px;
+  height: 25px;
+  width: 30px;
+  background-color: white;
+  text-align: left;
+  list-style-type: none;
+}
+
+/* Mat-icon-button */
+.mi-icon-button {
+  background-color: white;
+  padding: 0%;
+  list-style-type: none;
+}
+
+.mat-icon-centered {
+  padding-right: 3%;
+  list-style-type: none;
+}
+
+.textarea-sql {
+  background-color: darkblue;
+  color: white;
+  font:bold;
+  font-size: 15px;
+  width: 550px;
+  height: 150px;
+  border-style:solid;
+  border-radius: 5px;
+  border-color: white;
+  resize: none;
+}
+
+.textarea-commit {
+  background-color: darkblue;
+  color: black;
+  width: 550px;
+  height: 150px;
+  border-style:solid;
+  border-radius: 5px;
+  border-color: white;
+  resize: none;
+
+}
+
+.icono-archivo {
+  font-size: 24px;
+  color: white;
+}
+
+/* Estilos generales de la tabla */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+/* Estilos para las celdas de encabezado */
+th {
+  background-color: lightcoral;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+/* Estilos para las celdas de datos */
+td {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+/* Estilos al pasar el cursor sobre una fila */
+tr:hover {
+  background-color: #e5e5e5;
+}
+
+button {
+  padding: 0%;
+  border-color: black;
+  border-radius: 10px;
+  border-style:double;
+}
+
+.button-34 {
+  margin: 2%;
+  align-items: center;
+  appearance: none;
+  background-color: darkred;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-34:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-34:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+  background-color: lightgoldenrodyellow;
+  color: black;
+}
+
+.button-34:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-33 {
+  margin: 2%;
+  align-items: center;
+  appearance: none;
+  background-color: blueviolet;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-33:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-33:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+  background-color: lightgoldenrodyellow;
+  color: black;
+}
+
+.button-33:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-30 {
+  margin: 2%;
+  align-items: center;
+  appearance: none;
+  background-color: orange;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+  background-color: lightgoldenrodyellow;
+  color: black;
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.ventana {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: lightskyblue;
+  transform: translate(-50%, -50%);
+  width: 730px;
+  height: 475px;
+  border: double;
+  display:none;
+  text-align: left;
+}
+
+.ventana.visible {
+  display: flex;
+  text-align: left;
+}
+
+.ventana.contenido {
+  text-align: left;
+}
+
+.div-view{
+  background-color: darkblue;
+  width: 1140px;
+  height: 350px;
+  border: double;
+  border-radius: 5px;
+  visibility: visible;
+  text-align: center;
+}
+
+p{
+  font-size: 20px;
+}
+
+.button-31 {
+  margin: 2%;
+  align-items: center;
+  appearance: none;
+  background-color: red;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-31:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-31:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+  background-color: lightgoldenrodyellow;
+  color: black;
+}
+
+.button-31:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-32 {
+  display: none;
+  margin: 2%;
+  align-items: center;
+  appearance: none;
+  background-color: green;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-32:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-32:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+  background-color: lightgoldenrodyellow;
+  color: black;
+}
+
+.button-32:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.negro-transparente {
+  background-color: rgba(0, 0, 0, 0.5); /* 50% de opacidad */
+  color: #fff; /* color del texto */
+}

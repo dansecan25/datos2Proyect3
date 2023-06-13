@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Programming Language",
+    "children": [
+      { "name": "Python" },
+      { "name": "Java" },
+      { "name": "C++" }
+    ]
+  },
+  {
+    "name": "Operating System",
+    "children": [
+      { "name": "Windows" },
+      { "name": "MacOS" },
+      { "name": "Linux/Ubuntu" }
+    ]
+  },
+  {
+    "name": "Food",
+    "children": [
+      { "name": "Pizza" },
+      { "name": "HotDog" },
+      { "name": "Taco" }
+    ]
+  },
+  {
+    "name": "Drinks",
+    "children": [
+      { "name": "Water" },
+      { "name": "Coffee" },
+      { "name": "Tea" }
+    ]
+  }
+]

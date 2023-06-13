@@ -5,11 +5,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './guard/auth.guard';
 import { ServerModule } from '@angular/platform-server';
+import { UiComponent } from './ui/ui.component';
 
 const routes: Routes = [
   {component:LoginComponent,path:'login'},
  {component:RegisterComponent,path:'register'},
- {component:HomeComponent,path:'',canActivate:[AuthGuard]}
+ {component:UiComponent,path:'',canActivate:[AuthGuard]}
 ];
 
 @NgModule({

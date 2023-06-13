@@ -55,7 +55,10 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
-        app.UseCors(MyAllowSpecificOrigins); // Specify the policy name "default"
+        app.UseCors(builder=> builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader()); // Specify the policy name "default"
 
         app.UseRouting();
 
