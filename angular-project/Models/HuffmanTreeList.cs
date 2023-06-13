@@ -15,7 +15,6 @@ public class HuffmanListNode<HuffmanNode>
 public class HuffmanTreeList<T>
 {
     private HuffmanListNode<HuffmanNode>? head;
-    private HuffmanListNode<HuffmanNode>? tail;
     private int size;
 
     public void Add(HuffmanNode data)
@@ -26,18 +25,17 @@ public class HuffmanTreeList<T>
         {
             // If the list is empty, set the new node as both the head and tail
             head = newNode;
-            tail = newNode;
-            size=1;
+            size++;
         }
         else
         {
-            // Add the new node to the end of the list
-            if (tail != null)
-            {
-                tail.Next = newNode;
-                tail = newNode;
-                size++;
+            HuffmanListNode<HuffmanNode>? current=head;
+            while(current.Next!=null){
+                current=current.Next;
             }
+            current.Next=newNode;
+            newNode.Next=null;
+            size++;
         }
     }
 
@@ -46,29 +44,20 @@ public class HuffmanTreeList<T>
     if (head == null)
         return;
 
-    if (head == tail)
-    {
-        // Remove the only node in the list
-        head = null;
-        tail = null;
+    if(GetCount()==1){
+        head=null;
         size--;
     }
     else
     {
         // Find the node before the tail
         HuffmanListNode<HuffmanNode>? current = head;
-        while (current?.Next != tail)
+        while (current?.Next.Next != null)
         {
             current = current?.Next;
         }
-
-        // Remove the tail node
-        if (current != null)
-        {
-            current.Next = null;
-            tail = current;
-            size--;
-        }
+        current.Next=null;
+        size--;
     }
 }
 
@@ -78,14 +67,14 @@ public class HuffmanTreeList<T>
         HuffmanListNode<HuffmanNode>? current = head;
         while (current != null)
         {
-            Console.WriteLine(current.Data);
+            Console.WriteLine(current.Data.Frequency.ToString()+"   "+current.Data.Symbol.ToString());
             current = current.Next;
         }
     }
 
     public void Sort()
     {
-        if (head == null || head == tail)
+        if (head == null || GetCount()==1)
             return;
 
         bool swapped;
@@ -127,9 +116,12 @@ public class HuffmanTreeList<T>
 
     public HuffmanListNode<HuffmanNode>? GetNodeAtPosition(int position)
     {
-        HuffmanListNode<HuffmanNode>? current = head;
-        int count = 0;
-
+        
+        if(position==0){
+            return head;
+        }
+        HuffmanListNode<HuffmanNode>? current = head.Next;
+        int count = 1;
         while (current != null)
         {
             if (count == position)
@@ -156,4 +148,47 @@ public class HuffmanTreeList<T>
 
         return count;
     }
+    public int getSize(){
+        return this.size;
+    }
+    public void RemoveAt(int position)
+    {
+        if (position < 0 || position >= GetCount())
+        {
+            // Invalid position, do nothing
+            return;
+        }
+
+        if (head == null)
+        {
+            // List is empty, do nothing
+            return;
+        }
+
+        if (position == 0)
+        {
+            // Remove the head node
+            head = head.Next;
+            size--;
+            return;
+        }
+
+        // Find the node before the position
+        HuffmanListNode<HuffmanNode>? current = head;
+        for (int i = 0; i < position - 1; i++)
+        {
+            current = current?.Next;
+        }
+
+        if (current == null || current.Next == null)
+        {
+            // Invalid position, do nothing
+            return;
+        }
+
+        // Remove the node at the given position
+        current.Next = current.Next?.Next;
+        size--;
+    }
+    
 }

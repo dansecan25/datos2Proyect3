@@ -69,7 +69,7 @@ public class DictionaryHandmade<T>
         DictionaryNode<T>? current = head;
         while (current != null)
         {
-            if (current.Data.getInt() == charSearchValue)
+            if (current.Data.getChar() == charSearchValue)
                 return true;
             current = current.Next;
         }

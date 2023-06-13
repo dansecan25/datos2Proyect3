@@ -17,7 +17,12 @@ public class Program
         Console.WriteLine("Word:  "+alphabet);
         //Test alphabet and compress it
         var huffmanControl = new Huffman();
-        Console.WriteLine("Compressed string: "+huffmanControl.compress(alphabet,"dansecan26"));
+        string compressedString=huffmanControl.compress(alphabet,"1");
+        Console.WriteLine("Compressed string: "+compressedString);
+        var huffmanControl2=new Huffman();
+        string decompressedString=huffmanControl2.decompress(compressedString,"1");
+        Console.WriteLine("Decompressed string: "+decompressedString);
+
         Console.WriteLine("Reconverted string:  "+morseControl.alphabetToMorse(alphabet));
         var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         var builder = WebApplication.CreateBuilder(args);

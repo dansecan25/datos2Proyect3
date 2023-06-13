@@ -76,6 +76,17 @@ public class CompressionDictionary<T>
 
         return false;
     }
+    public bool StringInDictionary(string stringSearchVal){
+        CompressionNode<T>? current = head;
+        while (current != null)
+        {
+            if (current.Data.getString() == stringSearchVal)
+                return true;
+            current = current.Next;
+        }
+
+        return false;
+    }
 
     public char? GetInString(string value)
     {
