@@ -9,6 +9,10 @@ import {MatPaginatorModule} from "@angular/material/paginator"
 import {MatSortModule} from "@angular/material/sort"
 import {MatDialogModule} from "@angular/material/dialog"
 import {MatButtonModule} from "@angular/material/button"
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import {MatTreeModule} from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -23,7 +27,11 @@ import {MatButtonModule} from "@angular/material/button"
         MatPaginatorModule,
         MatSortModule,
         MatDialogModule,
-        MatButtonModule
+        MatButtonModule,
+        CommonModule,
+        FormsModule,
+        MatIconModule,
+        MatTreeModule
     ]
 })
 export class MaterialModule{}

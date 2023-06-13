@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UiComponent } from './ui/ui.component';
+
 const appRoute:Routes =[
   {path:"",component:HomeComponent},
   {path:"**",component:ErrorComponent},
